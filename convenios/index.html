@@ -42,7 +42,7 @@ svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .lead{margin:16px 0 0;font-size:17px;line-height:1.55;color:#E3E9F7;max-width:520px}
 .cred{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 18px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:var(--white);font-size:14px;font-weight:600}
 .cred svg{color:var(--sky)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,220px));border-top:1px solid rgba(255,255,255,.16)}
 .stat{padding:20px 4px 24px}
 .stat+.stat{border-left:1px solid rgba(255,255,255,.16);padding-left:22px}
 .stat b{display:block;font-family:var(--title);font-weight:700;font-size:clamp(26px,5vw,40px);line-height:1;letter-spacing:-.02em}
@@ -515,9 +515,8 @@ const fromHash = () => { const h=decodeURIComponent(location.hash.slice(1)); ret
 current = fromHash();
 
 function stats(){
-  const max = Math.max(...PROVIDERS.map(p=>{const m=/(\d+)\s*%/.exec(p.badge&&p.badge.text||"");return m?+m[1]:0}));
   const cats = new Set(PROVIDERS.map(p=>p.cat)).size;
-  $("#stats").innerHTML = [[PROVIDERS.length,"Convenios"],[`${max}%`,"Descuento máximo"],[cats,"Categorías"]]
+  $("#stats").innerHTML = [[PROVIDERS.length,"Convenios"],[cats,"Categorías"]]
     .map(([n,l])=>`<div class="stat"><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join("");
 }
 function chip(c){ return `<span class="chip ${c.type}">${c.type==="nat"?ICONS.globe:ICONS.pin}${esc(c.text)}</span>`; }
