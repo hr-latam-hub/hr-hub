@@ -4,87 +4,246 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Salud mental: mitos y realidades</title>
-  <meta name="description" content="Explora 10 mitos comunes sobre salud mental y descubre su realidad, a tu ritmo.">
+  <meta name="description" content="Diez ideas comunes sobre salud mental y lo que dice la evidencia. Un recorrido educativo de Recursos Humanos, Charger Logistics.">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="preload" href="fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // Si app.js no llega a cargar, el contenido se muestra igual.
+    window.__riseFallback = setTimeout(function () { document.documentElement.classList.add('no-rise'); }, 2500);
+  </script>
 </head>
 <body>
   <a class="skip" href="#mitos">Saltar a los mitos</a>
-  <main id="main">
 
-    <header class="hero">
-      <p class="eyebrow">Recorrido educativo - Charger Logistics</p>
-      <h1>Salud mental: mitos y realidades</h1>
-      <p class="lead">Algunas ideas populares sobre la salud mental generan estigma y dificultan pedir apoyo. Toca cualquier carta para descubrir la realidad, en el orden que quieras.</p>
-      <p class="note">Esta información es educativa y no sustituye la evaluación, el diagnóstico ni el tratamiento de un profesional de la salud.</p>
-    </header>
+  <header class="hero">
+    <div class="wrap">
+      <nav class="bar" aria-label="Secciones">
+        <img class="logo" src="img/charger-logo.png" alt="Charger Logistics" width="122" height="50">
+        <ul>
+          <li><a href="#mitos">Los mitos</a></li>
+          <li><a href="#apoyo">Líneas de apoyo</a></li>
+        </ul>
+      </nav>
 
-    <section id="mitos" aria-labelledby="mitos-title">
-      <div class="section-head">
-        <h2 id="mitos-title">Mitos</h2>
-        <p class="explored" id="explored" role="status" aria-live="polite">Has explorado 0 de 10</p>
+      <h1 data-rise>Salud mental:<br> mitos y realidades</h1>
+
+      <div class="hero-foot">
+        <div class="hero-copy" data-rise style="--d:1">
+          <p class="lead">Diez ideas que todavía escuchamos en casa y en el trabajo, y lo que dice la evidencia sobre cada una. Toca una idea para ver la realidad, en el orden que quieras.</p>
+          <p class="actions">
+            <a class="btn btn-light" href="#mitos">Ver los mitos</a>
+            <a class="link-light" href="#apoyo">Necesito hablar con alguien</a>
+          </p>
+        </div>
+        <p class="hero-myth" data-rise style="--d:2" aria-hidden="true"><s>“Ir al psicólogo es de&nbsp;locos.”</s></p>
       </div>
-      <ul class="grid" id="grid"></ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="myths" id="mitos" aria-labelledby="mitos-title">
+      <div class="wrap">
+        <div class="myths-head">
+          <div data-rise>
+            <h2 id="mitos-title">Diez ideas que todavía escuchamos</h2>
+            <p>Cada una frena a alguien que necesita apoyo. Ábrelas para ver qué sabemos hoy y de dónde viene la información.</p>
+          </div>
+          <div class="progress" data-rise style="--d:1">
+            <p id="explored" role="status" aria-live="polite">Has explorado 0 de 10</p>
+            <div class="meter" aria-hidden="true"><span id="meter-fill"></span></div>
+            <button type="button" class="btn btn-quiet" id="toggle-all" hidden>Abrir todas</button>
+          </div>
+        </div>
+
+        <ul class="myth-list">
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Terapia solo para “graves”</span>
+                <span class="claim">“Ir al psicólogo es de locos. La terapia es solo para personas graves.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La atención psicológica puede ayudar a cualquier persona que quiera mejorar su bienestar emocional, manejar el estrés, procesar experiencias o desarrollar nuevas habilidades. No está reservada para casos graves. Según la OMS, 1 de cada 4 personas necesitará apoyo en salud mental en algún momento de su vida.</p>
+                <p class="sources">Fuentes: Mascayano et al. (2016); Ministerio de Salud de Argentina (2018); Hospital Escuela de Salud Mental (2025)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Voluntad y salud mental</span>
+                <span class="claim">“Los problemas de salud mental son debilidad de carácter o falta de fuerza de voluntad.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La depresión, la ansiedad y otras condiciones tienen causas biológicas, psicológicas y sociales. No son fallas morales ni defectos de personalidad. Decir “échale ganas” no basta: el apoyo profesional y el acompañamiento pueden marcar la diferencia, y creer este mito genera culpa y vergüenza que retrasan pedir ayuda.</p>
+                <p class="sources">Fuentes: Universidad Veracruzana (2018); UNICEF (2023); El Salvador.com (2026)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Hombres y emociones</span>
+                <span class="claim">“Los hombres no deben mostrar emociones; pedir ayuda es de débiles.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> Todas las personas tienen emociones, sin importar su género. Expresar lo que se siente y pedir ayuda es una muestra de autocuidado, no de debilidad. Callar siempre lo que se siente puede dificultar la comunicación y retrasar el apoyo que alguien necesita.</p>
+                <p class="sources">Fuentes: Workplace Options (2024); JMU Latinos Health (2023); SanaMetx (2025)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Pedir ayuda es egoísta</span>
+                <span class="claim">“Pedir ayuda psicológica es egoísta o fallarle a la familia.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> Cuidar tu salud mental no es egoísmo: también te permite estar mejor con las personas que quieres. Pedir apoyo es una forma de responsabilidad contigo y con tu entorno, especialmente si cuidas de otras personas.</p>
+                <p class="sources">Fuentes: ReachLink (2026); JMU Latinos Health (2024); Postpartum Support International (2025)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Solo en familia</span>
+                <span class="claim">“Los problemas de salud mental son privados y solo se hablan en familia.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La familia puede ser un gran apoyo, pero acompañar no es lo mismo que tratar. Las condiciones de salud mental pueden requerir atención profesional. Hablar con la familia y buscar ayuda especializada se complementan.</p>
+                <p class="sources">Fuentes: JMU Latinos Health (2023); ReachLink (2026); Center for Health Journalism</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Trabajo</span>
+                <span class="claim">“Las personas con trastornos mentales no pueden trabajar.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> Con los apoyos adecuados, muchas personas con condiciones de salud mental trabajan y llevan vidas plenas. Un diagnóstico no define la capacidad de una persona. La discriminación y la falta de ajustes razonables son una barrera mayor que la condición misma.</p>
+                <p class="sources">Fuentes: SOM360; Ministerio de Salud de Argentina (2018); Mascayano Tapia (2015)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Fe y depresión</span>
+                <span class="claim">“La depresión es falta de fe, castigo divino o un problema espiritual.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La depresión es una condición de salud con componentes biológicos, psicológicos y sociales; no es falta de fe ni un castigo. La fe y la espiritualidad pueden ser una fuente valiosa de apoyo, pero conviven con la atención profesional, no la reemplazan. Pensar que es un castigo puede sumar culpa y retrasar el tratamiento.</p>
+                <p class="sources">Fuentes: Medical News Today (2021); Step Up for Mental Health (2023); GMHAN</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Duración y costo</span>
+                <span class="claim">“La terapia dura años y cuesta una fortuna.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> Muchas terapias actuales tienen una duración definida, que suele ir de unas pocas semanas a algunos meses según cada caso. Además, existen opciones públicas, comunitarias, universitarias y en línea de bajo costo o gratuitas. Consulta qué servicios hay en tu localidad.</p>
+                <p class="sources">Fuentes: Origen.pe (2026); Mipsi México (2024); Psicología y Mente (2017)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Terapia en línea</span>
+                <span class="claim">“La terapia en línea no funciona o no es terapia de verdad.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La terapia también puede hacerse a través de una pantalla. Para muchas personas y situaciones puede ser una alternativa útil, siempre que la brinde un profesional calificado, en un entorno adecuado y con una modalidad apropiada a sus necesidades.</p>
+                <p class="sources">Fuentes: Mipsi México (2024)</p>
+              </div>
+            </details>
+          </li>
+          <li data-rise>
+            <details class="myth">
+              <summary>
+                <span class="topic">Recuperación</span>
+                <span class="claim">“Los trastornos mentales son incurables; la persona nunca mejorará.”</span>
+                <span class="cue"><span class="cue-open">Ver la realidad</span><span class="cue-close">Ocultar</span></span>
+              </summary>
+              <div class="answer">
+                <p><strong>La realidad.</strong> La recuperación es posible. Con tratamiento, apoyo y acompañamiento adecuados, muchas personas mejoran, logran estabilidad y viven bien. Un diagnóstico no es una sentencia ni define el futuro de nadie.</p>
+                <p class="sources">Fuentes: SOM360; Ministerio de Salud de Argentina (2018)</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="support" id="apoyo" aria-labelledby="apoyo-title">
-      <h2 id="apoyo-title">¿Necesitas hablar con alguien?</h2>
-      <p>Estas líneas de apoyo son externas y gratuitas o de atención general. Toca un número para llamar desde tu celular.</p>
-
-      <div class="support-groups">
-        <div class="support-group">
-          <h3>México</h3>
-          <ul>
-            <li>
-              <span class="who">Línea de la Vida (Secretaría de Salud, CONASAMA)</span>
-              <a class="call" href="tel:8009112000" aria-label="Llamar a la Línea de la Vida, 800 911 2000">800 911 2000</a>
-              <span class="hours">24/7</span>
-            </li>
-            <li>
-              <span class="who">SAPTEL (Cruz Roja)</span>
-              <a class="call" href="tel:5552598121" aria-label="Llamar a SAPTEL, 55 5259 8121">55 5259 8121</a>
-              <span class="hours">24/7</span>
-            </li>
-          </ul>
+      <div class="wrap support-grid">
+        <div class="support-intro" data-rise>
+          <h2 id="apoyo-title">¿Necesitas hablar con alguien?</h2>
+          <p>Estas líneas son externas a la empresa, gratuitas o de atención general. Desde tu celular, toca un número para llamar.</p>
         </div>
-        <div class="support-group">
-          <h3>Honduras</h3>
-          <ul>
-            <li>
-              <span class="who">Teléfono de la Esperanza (Tegucigalpa, San Pedro Sula y La Ceiba)</span>
-              <a class="call" href="tel:150" aria-label="Llamar al Teléfono de la Esperanza, 150">150</a>
-            </li>
-          </ul>
+
+        <div class="lines">
+          <div class="country" data-rise style="--d:1">
+            <h3>México</h3>
+            <ul>
+              <li>
+                <a class="call" href="tel:8009112000" aria-label="Llamar a la Línea de la Vida, 800 911 2000">800 911 2000</a>
+                <span class="who">Línea de la Vida (Secretaría de Salud, CONASAMA). Atiende 24/7.</span>
+              </li>
+              <li>
+                <a class="call" href="tel:5552598121" aria-label="Llamar a SAPTEL, 55 5259 8121">55 5259 8121</a>
+                <span class="who">SAPTEL (Cruz Roja). Atiende 24/7.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="country" data-rise style="--d:2">
+            <h3>Honduras</h3>
+            <ul>
+              <li>
+                <a class="call" href="tel:150" aria-label="Llamar al Teléfono de la Esperanza, 150">150</a>
+                <span class="who">Teléfono de la Esperanza (Tegucigalpa, San Pedro Sula y La Ceiba).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="emergency" data-rise>
+          <a class="call call-big" href="tel:911" aria-label="Llamar al 911">911</a>
+          <p><strong>En una emergencia, llama al 911</strong> en México y en Honduras. Si tú u otra persona está en riesgo, no esperes: contacta a los servicios de emergencia o a un profesional de tu localidad.</p>
         </div>
       </div>
-
-      <p class="emergency"><strong>En emergencias:</strong> <a class="call" href="tel:911" aria-label="Llamar al 911">911</a> en México y en Honduras.</p>
-
-      <div class="closing">
-        <p class="highlight">La salud mental merece comprensión, información clara y apoyo sin estigma.</p>
-        <p class="highlight">Buscar ayuda no es una señal de debilidad. Es una forma de cuidado.</p>
-      </div>
-      <p class="note">Este sitio tiene fines educativos y no sustituye la atención de profesionales de la salud. Si una persona está atravesando una situación de riesgo o necesita apoyo, debe contactar a los servicios de emergencia o a un profesional de su localidad.</p>
     </section>
-
   </main>
 
-  <dialog id="dialog" aria-labelledby="d-title">
-    <article class="d-body">
-      <p class="myth-num" id="d-num"></p>
-      <h2 id="d-title"></h2>
-      <div class="claim">
-        <span class="tag">Idea popular</span>
-        <p id="d-claim"></p>
+  <footer class="close">
+    <div class="wrap">
+      <h2 data-rise>Buscar ayuda es una forma de&nbsp;cuidado</h2>
+      <div class="close-foot">
+        <p class="close-text" data-rise style="--d:1">La salud mental merece comprensión, información clara y apoyo sin estigma.</p>
+        <div class="sign" data-rise style="--d:2">
+          <img src="img/charger-logo.png" alt="Charger Logistics" width="146" height="60" loading="lazy">
+          <p>Recursos Humanos. Este sitio es educativo y no sustituye la evaluación, el diagnóstico ni el tratamiento de un profesional de la salud.</p>
+        </div>
       </div>
-      <div class="reality">
-        <span class="tag">Realidad</span>
-        <p id="d-reality"></p>
-      </div>
-      <p class="sources"><strong>Fuentes:</strong> <span id="d-sources"></span></p>
-      <p class="footnote">Contenido educativo. No sustituye la atención de profesionales de la salud.</p>
-      <button type="button" class="btn primary" id="d-close">Volver a los mitos</button>
-    </article>
-  </dialog>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
