@@ -62,13 +62,13 @@ a{color:var(--blue);text-underline-offset:3px}
 .hero h1{font-size:var(--fs-display);font-weight:700;line-height:1;letter-spacing:-.03em}
 .lead{margin-top:28px;max-width:46ch}
 .hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
-.lines{grid-column:9/span 4;background:var(--blue);padding:clamp(24px,2.6vw,36px)}
-.lines h2{font-size:var(--fs-body);font-weight:600}
-.lines p{margin-top:8px;font-size:var(--fs-small);color:#DCEBFA}
+.lines{grid-column:9/span 4;background:var(--white);color:var(--ink);padding:clamp(24px,2.6vw,36px)}
+.lines h2{font-size:var(--fs-body);font-weight:600;color:var(--indigo)}
+.lines p{margin-top:8px;font-size:var(--fs-small);color:var(--muted)}
 .lines ul{list-style:none;margin-top:24px;display:grid;gap:20px}
-.lines li span{display:block;font-size:var(--fs-small);color:#DCEBFA;margin-bottom:8px}
-.call{display:inline-block;font-family:var(--title);font-weight:700;font-size:var(--fs-statement);line-height:1;letter-spacing:-.01em;white-space:nowrap;background:var(--white);color:var(--indigo);text-decoration:none;padding:.45em .8em;border-radius:999px;transition:background-color .2s,transform .15s var(--ease)}
-.call:hover{background:var(--sky)}
+.lines li span{display:block;font-size:var(--fs-small);color:var(--muted);margin-bottom:8px}
+.call{display:inline-block;font-family:var(--title);font-weight:700;font-size:var(--fs-statement);line-height:1;letter-spacing:-.01em;white-space:nowrap;background:var(--indigo);color:var(--white);text-decoration:none;padding:.45em .8em;border-radius:999px;transition:background-color .2s,transform .15s var(--ease)}
+.call:hover{background:var(--ink)}
 .call:active{transform:scale(.96)}
 
 /* Secciones */
@@ -190,10 +190,10 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
       </div>
       <aside class="lines" data-rise style="--d:1" aria-labelledby="t-lineas">
         <h2 id="t-lineas">Gestiones Médicas</h2>
-        <p>Dudas sobre cobertura o procedimientos médicos.</p>
+        <p>Escríbeles por WhatsApp si tienes dudas sobre cobertura o procedimientos médicos.</p>
         <ul>
-          <li><span>Línea 1</span><a class="call" href="tel:+50495174228" aria-label="Llamar a Gestiones Médicas 1, +504 9517-4228">+504 9517-4228</a></li>
-          <li><span>Línea 2 · CN Seguros</span><a class="call" href="tel:+50493814205" aria-label="Llamar a Gestiones Médicas 2, CN Seguros, +504 9381-4205">+504 9381-4205</a></li>
+          <li><span>WhatsApp · Línea 1</span><a class="call" href="https://wa.me/50495174228" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Gestiones Médicas 1, +504 9517-4228">+504 9517-4228</a></li>
+          <li><span>WhatsApp · Línea 2, CN Seguros</span><a class="call" href="https://wa.me/50493814205" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Gestiones Médicas 2, CN Seguros, +504 9381-4205">+504 9381-4205</a></li>
         </ul>
       </aside>
     </div>
