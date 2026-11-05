@@ -5,289 +5,322 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seguro Médico Seatlan | Charger Logistics</title>
 <meta name="description" content="Reclamos de reembolso, adición de dependientes, formularios y red de proveedores del seguro médico Seatlan para colaboradores de Charger Logistics Honduras.">
+<meta name="theme-color" content="#2E3192">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="preload" href="../fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Poppins";src:url("../fonts/poppins-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/poppins-latin-700-normal.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Open Sans";src:url("../fonts/open-sans-latin-wght-normal.woff2") format("woff2");font-weight:300 800;font-display:swap}
 :root{
-  color-scheme:light;
-  --indigo:#2E3192; --blue:#004AAD; --cyan:#02AFF0; --sky:#7DC3EA; --black:#000000; --white:#ffffff;
-  --mist:#DDE4EE; --page:#F3F6FA; --ink:#0B0F2E; --muted:#4D5878; --line:#DDE4EE;
-  --swoosh:linear-gradient(90deg,#7DC3EA,#02AFF0);
-  --title:"Poppins","Roboto",system-ui,sans-serif;
+  --indigo:#2E3192; --blue:#004AAD; --cyan:#02AFF0; --sky:#7DC3EA;
+  --ink:#0B0F2E; --white:#fff; --tint:#F1F5FA; --track:#DDE4EE; --muted:#3E4868;
+  --title:"Poppins",system-ui,sans-serif;
   --body:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fs-display:clamp(36px,5.4vw,96px);
+  --fs-h2:clamp(32px,4.2vw,64px);
+  --fs-statement:clamp(22px,2.2vw,32px);
+  --fs-body:18px; --fs-small:16px;
+  --m:clamp(20px,4.5vw,64px);
+  --gap:clamp(96px,10vw,160px);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:16px}
-html,body{margin:0}
-img{max-width:100%}
-[hidden]{display:none!important}
-body{background:var(--page);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:var(--blue)}
-button,a,summary{touch-action:manipulation}
-svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font:400 var(--fs-body)/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--title);margin:0;text-wrap:balance}
+p{margin:0} ul,ol{margin:0;padding:0}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--blue);text-underline-offset:3px}
+::selection{background:var(--cyan);color:var(--ink)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.wrap{padding-inline:var(--m)}
+.skip{position:absolute;left:var(--m);top:-100px;z-index:10;background:var(--white);color:var(--indigo);padding:12px 20px;font-weight:600}
+.skip:focus{top:16px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:48px}
 
-/* HERO */
-.hero{background:var(--indigo);color:var(--white);position:relative;overflow:hidden;padding:30px 20px 0}
-.hero::before{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;border:2px solid rgba(125,195,234,.18);pointer-events:none}
-.hero::after{content:"";position:absolute;right:-60px;top:40px;width:420px;height:420px;border-radius:50%;border:2px solid rgba(2,175,240,.14);pointer-events:none}
-.hero-in{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{height:56px;width:auto;display:block}
-.tag{font:600 11px var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--sky);text-align:right}
-.hero-main{padding:44px 0 32px;max-width:680px}
-.eyebrow{display:flex;align-items:center;gap:12px;font:600 12px var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--sky)}
-.eyebrow::before{content:"";width:36px;height:1px;background:var(--sky)}
-.hero h1{font-family:var(--title);font-weight:600;font-size:clamp(32px,6.2vw,54px);line-height:1.08;margin:14px 0 0;letter-spacing:-.02em;text-wrap:balance}
-.hero h1 em{font-style:normal;background:var(--swoosh);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{margin:16px 0 0;font-size:17px;line-height:1.55;color:#E3E9F7;max-width:540px}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.chip{display:flex;align-items:center;gap:12px;padding:10px 18px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:var(--white);text-decoration:none;transition:background .15s}
-.chip:hover{background:rgba(255,255,255,.16)}
-.chip svg{color:var(--sky)}
-.chip small{display:block;font-size:12px;color:var(--sky)}
-.chip b{font-size:15px;font-weight:700}
-.swoosh-bar{height:5px;background:var(--swoosh)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:999px;font:600 var(--fs-small)/1 var(--body);text-decoration:none;cursor:pointer;transition:background-color .2s,color .2s,transform .15s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-light{background:var(--white);color:var(--indigo)}
+.btn-light:hover{background:var(--sky)}
+.btn-dark{background:var(--indigo);color:var(--white)}
+.btn-dark:hover{background:var(--ink)}
+.link{font-weight:600;font-size:var(--fs-small);color:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:6px;text-decoration-thickness:2px;transition:color .2s}
+.link:hover{color:var(--sky)}
 
-/* LAYOUT */
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
-.sec{display:flex;align-items:center;gap:14px;margin:44px 0 16px;font:600 12px var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--blue)}
-.sec::after{content:"";flex:1;height:1px;background:var(--line)}
-h2.title{font-family:var(--title);font-weight:600;font-size:clamp(22px,3.6vw,30px);line-height:1.15;letter-spacing:-.01em;margin:0 0 6px;color:var(--ink)}
-.sub{margin:0 0 18px;color:var(--muted);max-width:60ch}
+/* Portada */
+.hero{background:var(--indigo);color:var(--white)}
+.hero .wrap{padding-block:28px clamp(64px,8vw,120px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{width:clamp(96px,9vw,122px)}
+.bar ul{list-style:none;display:flex;gap:clamp(16px,2.6vw,36px)}
+.bar a{color:var(--white);font-weight:600;font-size:var(--fs-small);text-decoration:none;display:inline-block;padding:8px 0;transition:color .2s}
+.bar a:hover{color:var(--sky)}
+.hero .grid{margin-top:clamp(56px,7vw,112px);align-items:end}
+.hero-copy{grid-column:1/span 7}
+.hero h1{font-size:var(--fs-display);font-weight:700;line-height:1;letter-spacing:-.03em}
+.lead{margin-top:28px;max-width:46ch}
+.hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.lines{grid-column:9/span 4;background:var(--blue);padding:clamp(24px,2.6vw,36px)}
+.lines h2{font-size:var(--fs-body);font-weight:600}
+.lines p{margin-top:8px;font-size:var(--fs-small);color:#DCEBFA}
+.lines ul{list-style:none;margin-top:24px;display:grid;gap:20px}
+.lines li span{display:block;font-size:var(--fs-small);color:#DCEBFA;margin-bottom:8px}
+.call{display:inline-block;font-family:var(--title);font-weight:700;font-size:var(--fs-statement);line-height:1;letter-spacing:-.01em;white-space:nowrap;background:var(--white);color:var(--indigo);text-decoration:none;padding:.45em .8em;border-radius:999px;transition:background-color .2s,transform .15s var(--ease)}
+.call:hover{background:var(--sky)}
+.call:active{transform:scale(.96)}
 
-/* QUICK ACTIONS */
-.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
-.qa{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:14px;background:var(--white);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s}
-.qa:hover{transform:translateY(-2px);border-color:var(--sky);box-shadow:0 10px 28px rgba(46,49,146,.12)}
-.qa .ic{width:42px;height:42px;border-radius:11px;background:var(--indigo);color:var(--white);display:grid;place-items:center}
-.qa h3{font-family:var(--title);font-weight:600;font-size:17px;margin:4px 0 0}
-.qa p{margin:0;font-size:14px;color:var(--muted)}
-.qa .go{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:6px}
+/* Secciones */
+section{padding-block:var(--gap)}
+.tinted{background:var(--tint)}
+.side{grid-column:1/span 5}
+.side h2{font-size:var(--fs-h2);font-weight:700;line-height:1.02;letter-spacing:-.03em;color:var(--indigo)}
+.side > p{margin-top:24px;max-width:42ch}
+.main{grid-column:7/span 6}
 
-/* STEPS */
-.steps{list-style:none;margin:0;padding:6px 22px;background:var(--white);border:1px solid var(--line);border-radius:16px;counter-reset:s}
-.steps li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);counter-increment:s}
-.steps li:last-child{border-bottom:0}
-.steps li::before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--indigo);color:var(--white);font:600 13px var(--title);display:grid;place-items:center}
-.steps li>div{padding-top:3px;font-size:15px}
-.steps ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:4px}
-.steps ul li{display:block;padding:0;border:0;counter-increment:none;color:var(--muted);font-size:14.5px}
-.steps ul li::before{content:none}
-.steps ul li b{color:var(--ink)}
+.steps{list-style:none;counter-reset:s;display:grid;gap:28px}
+.steps > li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;column-gap:16px}
+.steps > li::before{content:counter(s);font-family:var(--title);font-weight:700;font-size:var(--fs-statement);line-height:1;color:var(--cyan)}
+.steps b{color:var(--indigo)}
 
-.note{margin-top:16px;padding:18px 20px;border-radius:12px;background:#E9F6FD;border-left:4px solid var(--cyan)}
-.note strong{display:block;margin-bottom:6px;font-family:var(--title);font-weight:600;color:var(--blue);font-size:15px}
-.note ul{margin:0;padding-left:18px;font-size:14.5px}
-.note li{margin-bottom:4px}
-.send{margin-top:14px;padding:16px 20px;border-radius:12px;background:var(--indigo);color:var(--white)}
-.send b{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:6px}
-.send a{color:var(--white);font-weight:600;overflow-wrap:anywhere}
+.send{margin-top:40px;background:var(--indigo);color:var(--white);padding:clamp(24px,2.6vw,36px)}
+.send h3{font-size:var(--fs-body);font-weight:600}
+.send ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.send a{color:var(--white);font-weight:600;overflow-wrap:anywhere;text-decoration-color:var(--sky);text-decoration-thickness:2px;text-underline-offset:5px}
+.send a:hover{color:var(--sky)}
+.send .cc{margin-top:16px;font-size:var(--fs-small);color:#DCEBFA}
+.before{margin-top:56px;background:var(--tint);padding:clamp(24px,2.6vw,36px)}
+.before h3{font-size:var(--fs-body);font-weight:600;color:var(--indigo)}
+.before ul{margin-top:12px;padding-left:1.2em;display:grid;gap:8px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:10px;background:var(--indigo);color:var(--white);font:700 14px var(--body);text-decoration:none;transition:background .15s}
-.btn:hover{background:var(--blue)}
-.btn.alt{background:var(--white);color:var(--indigo);border:1.5px solid var(--indigo)}
-.btn.alt:hover{background:var(--page)}
-.btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.docs-need{margin-top:40px;display:grid;gap:12px}
+.docs-need div{background:var(--white);padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.docs-need dt{font-weight:700;color:var(--indigo)}
+.docs-need dd{margin:0}
+.dl{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.hint{font-size:var(--fs-small);color:var(--muted)}
 
-/* FAQ */
-.faq-cat{font:700 12px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin:26px 0 10px}
-details.faq{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
-details.faq[open]{border-color:var(--sky)}
-details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:600;font-size:15.5px}
+/* Preguntas */
+.faq-list{grid-column:7/span 6;display:grid;gap:56px}
+.faq-cat{font-size:var(--fs-statement);font-weight:600;color:var(--indigo);letter-spacing:-.015em;margin-bottom:16px}
+.faq-group{--pad:clamp(14px,1.6vw,22px);display:grid;gap:6px}
+details.faq{margin-inline:calc(-1*var(--pad))}
+details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:18px var(--pad);font-weight:600;transition:background-color .25s}
 details.faq summary::-webkit-details-marker{display:none}
-details.faq summary svg{color:var(--muted);transition:transform .2s}
-details.faq[open] summary svg{transform:rotate(180deg);color:var(--cyan)}
-details.faq .a{padding:0 18px 18px;font-size:15px;color:var(--muted)}
+details.faq summary:hover,details.faq[open] summary{background:var(--tint)}
+.mark{flex:none;font-family:var(--title);font-weight:700;color:var(--blue);width:1em;text-align:center;transition:transform .3s var(--ease)}
+.mark::before{content:"+"}
+details.faq[open] .mark{transform:rotate(45deg)}
+details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;animation:reveal .45s var(--ease) both}
+@keyframes reveal{from{opacity:0;transform:translateY(10px)}}
 
-/* DOCS */
-.docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.doc{display:flex;flex-direction:column;padding:22px;border-radius:14px;background:var(--white);border:1px solid var(--line)}
-.doc .ic{width:42px;height:42px;border-radius:11px;background:#E9F6FD;color:var(--blue);display:grid;place-items:center;margin-bottom:12px}
-.doc h3{font-family:var(--title);font-weight:600;font-size:17px;margin:0 0 8px}
-.doc ul{margin:0 0 16px;padding-left:18px;color:var(--muted);font-size:14.5px;flex:1}
-.doc li{margin-bottom:4px}
-.access{margin-top:10px;font-size:12px;color:var(--muted);text-align:center}
+/* Formularios */
+.resources{background:var(--sky)}
+.resources .side h2{color:var(--ink)}
+.res{grid-column:span 6;background:var(--white);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column}
+.res h3{font-size:var(--fs-statement);font-weight:600;color:var(--indigo);letter-spacing:-.015em}
+.res ul{margin:20px 0 32px;padding-left:1.2em;display:grid;gap:8px;flex:1}
+.res .btn{align-self:flex-start}
+.res-head{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px;align-items:end}
+.res-head h2{grid-column:1/span 7;font-size:var(--fs-h2);font-weight:700;line-height:1.02;letter-spacing:-.03em}
+.res-head p{grid-column:9/span 4}
 
-/* FOOTER */
-.site-foot{background:var(--indigo);color:var(--white);margin-top:64px}
-.foot-in{max-width:1080px;margin:0 auto;padding:30px 20px 34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
-.ppl{font-family:var(--title);font-weight:600;font-size:20px;letter-spacing:-.01em;text-align:right}
-.ppl small{display:block;font:400 13px var(--body);color:var(--sky);margin-top:2px}
-.legal{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+/* Cierre */
+.close{background:var(--indigo);color:var(--white);padding-block:var(--gap) 56px}
+.close h2{font-size:var(--fs-display);font-weight:700;line-height:1;letter-spacing:-.03em}
+.close .mail{display:inline-block;margin-top:32px;font-family:var(--title);font-weight:600;font-size:var(--fs-statement);color:var(--sky);overflow-wrap:anywhere;text-decoration-thickness:2px;text-underline-offset:8px;transition:color .2s}
+.close .mail:hover{color:var(--white)}
+.close .grid{margin-top:clamp(64px,7vw,112px);align-items:end}
+.close .sign{grid-column:1/span 6;display:flex;align-items:center;gap:24px}
+.close .sign img{width:146px}
+.close .note{grid-column:8/span 5;font-size:var(--fs-small)}
 
-@media (max-width:820px){.quick{grid-template-columns:1fr}.docs{grid-template-columns:1fr}}
-@media (max-width:560px){.brand{height:46px}.tag{font-size:10px;letter-spacing:.16em}.hero-main{padding:34px 0 26px}.steps{padding:4px 16px}.ppl{text-align:left}}
+/* Entradas */
+.js [data-rise]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--d,0)*70ms)}
+.js [data-rise].in,.no-rise [data-rise]{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .grid,.res-head{grid-template-columns:minmax(0,1fr)}
+  .hero-copy,.lines,.side,.main,.faq-list,.res,.res-head h2,.res-head p,.close .sign,.close .note{grid-column:1/-1}
+  .lines{max-width:520px}
+  .bar ul li.opt{display:none}
+}
+@media (max-width:560px){
+  .steps > li{grid-template-columns:40px 1fr}
+  .docs-need div{grid-template-columns:1fr;gap:4px}
+  .send ul{font-size:var(--fs-small)}
+  .close .sign{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-rise]{opacity:1;transform:none;transition:none}
+  details.faq .a{animation:none}
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important}
+}
 </style>
+<script>
+document.documentElement.classList.add('js');
+window.__riseFallback=setTimeout(function(){document.documentElement.classList.add('no-rise');},2500);
+</script>
 </head>
 <body>
+<a class="skip" href="#reclamo">Saltar al contenido</a>
 
 <header class="hero">
-  <div class="hero-in">
-    <div class="topbar">
-      <img class="brand" src="charger-logo.png" alt="Charger Logistics">
-      <div class="tag">Recursos Humanos · Honduras</div>
-    </div>
-    <div class="hero-main">
-      <div class="eyebrow">Seguro médico Seatlan</div>
-      <h1>Tu seguro médico, <em>claro y a la mano</em></h1>
-      <p class="lead">Reembolsos, dependientes, formularios y red de proveedores en un solo lugar.</p>
-      <div class="chips">
-        <a class="chip" href="tel:+50495174228">
-          <svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          <span><small>Gestiones Médicas 1</small><b>+504 9517-4228</b></span>
-        </a>
-        <a class="chip" href="tel:+50493814205">
-          <svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          <span><small>Gestiones Médicas 2 · CN Seguros</small><b>+504 9381-4205</b></span>
-        </a>
+  <div class="wrap">
+    <nav class="bar" aria-label="Secciones">
+      <img class="brand" src="charger-logo.png" alt="Charger Logistics" width="122" height="50">
+      <ul>
+        <li><a href="#reclamo">Reclamos</a></li>
+        <li><a href="#dependientes">Dependientes</a></li>
+        <li class="opt"><a href="#faq">Preguntas</a></li>
+        <li class="opt"><a href="#documentos">Formularios</a></li>
+      </ul>
+    </nav>
+
+    <div class="grid">
+      <div class="hero-copy" data-rise>
+        <h1>Tu seguro médico Seatlan</h1>
+        <p class="lead">Reembolsos, dependientes, formularios y red de proveedores, claros y en un solo lugar.</p>
+        <p class="hero-actions">
+          <a class="btn btn-light" href="#reclamo">Presentar un reclamo</a>
+          <a class="link" href="#dependientes">Agregar un dependiente</a>
+        </p>
       </div>
+      <aside class="lines" data-rise style="--d:1" aria-labelledby="t-lineas">
+        <h2 id="t-lineas">Gestiones Médicas</h2>
+        <p>Dudas sobre cobertura o procedimientos médicos.</p>
+        <ul>
+          <li><span>Línea 1</span><a class="call" href="tel:+50495174228" aria-label="Llamar a Gestiones Médicas 1, +504 9517-4228">+504 9517-4228</a></li>
+          <li><span>Línea 2 · CN Seguros</span><a class="call" href="tel:+50493814205" aria-label="Llamar a Gestiones Médicas 2, CN Seguros, +504 9381-4205">+504 9381-4205</a></li>
+        </ul>
+      </aside>
     </div>
   </div>
-  <div class="swoosh-bar"></div>
 </header>
 
-<main class="wrap">
-
-
-  <nav class="quick" aria-label="Accesos rápidos">
-    <a class="qa" href="#reclamo">
-      <span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
-      <h3>Presentar un reclamo</h3>
-      <p>Pasos y requisitos para tu reembolso.</p>
-      <span class="go">Ver proceso <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="qa" href="#dependientes">
-      <span class="ic"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5M19 8v6M16 11h6"/></svg></span>
-      <h3>Agregar dependiente</h3>
-      <p>Cónyuge e hijos, con ticket en Workday.</p>
-      <span class="go">Ver pasos <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="qa" href="#documentos">
-      <span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-      <h3>Formularios y proveedores</h3>
-      <p>Descarga formularios y consulta la red.</p>
-      <span class="go">Abrir carpetas <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-  </nav>
-
-  <!-- RECLAMO -->
+<main>
   <section id="reclamo" aria-labelledby="t-reclamo">
-    <div class="sec">Reembolsos</div>
-    <h2 class="title" id="t-reclamo">Cómo presentar un reclamo</h2>
-    <p class="sub">Sigue estos pasos para que la aseguradora valide tu reembolso sin devoluciones.</p>
-    <ol class="steps">
-      <li><div>Completa el formulario de reclamo en su totalidad, incluyendo la sección del asegurado y la del médico tratante.</div></li>
-      <li><div>Presenta un formulario de reclamo independiente por cada miembro de la familia.</div></li>
-      <li><div>Adjunta el recibo de honorarios médicos con firma y sello del médico, con todos los requisitos fiscales del SAR, el nombre del paciente y el detalle de procedimientos y valores.</div></li>
-      <li><div>Las recetas médicas deben incluir nombre del paciente, fecha, firma y sello del médico tratante.</div></li>
-      <li><div>Las facturas de medicamentos deben tener sello de pago y acompañarse de la receta original a nombre del paciente. <b>No se aceptan reimpresiones ni copias.</b></div></li>
-      <li><div>Para laboratorios o rayos X, presenta factura o recibo con requisitos fiscales del SAR, el detalle correspondiente y la receta médica, a nombre del paciente.</div></li>
-      <li><div>Si la farmacia retiene la receta de un medicamento controlado, presenta una fotocopia y solicita que la factura indique que fue retenida, con sello y firma de quien despachó.</div></li>
-      <li><div>Verifica que todos los documentos estén firmados y sellados por el médico, y que los diagnósticos y fechas coincidan entre la receta, el formulario y los gastos presentados.</div></li>
-      <li><div>Envía toda la documentación escaneada en PDF por correo electrónico (ver destinatarios abajo).</div></li>
-    </ol>
-
-    <div class="send">
-      <b>Enviar documentación en PDF a</b>
-      <a href="mailto:gvarela@cnseguros.hn">gvarela@cnseguros.hn</a> ·
-      <a href="mailto:gestionesmedicascol@cnseguros.hn">gestionesmedicascol@cnseguros.hn</a><br>
-      CC: <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>
-    </div>
-
-    <div class="note">
-      <strong>Nota importante</strong>
-      <ul>
-        <li>Escanea toda la documentación en buena resolución, sin borrones, tachaduras ni enmendaduras, y envíala en formato PDF.</li>
-        <li>Las facturas que indiquen reimpresión o copia no son reembolsables.</li>
-        <li>Una vez la aseguradora recibe y valida tu documentación digital, el reembolso se realiza directamente a tu cuenta bancaria.</li>
-      </ul>
+    <div class="wrap grid">
+      <div class="side" data-rise>
+        <h2 id="t-reclamo">Cómo presentar un reclamo</h2>
+        <p>Sigue estos pasos para que la aseguradora valide tu reembolso sin devoluciones.</p>
+        <div class="send">
+          <h3>Envía la documentación en PDF a</h3>
+          <ul>
+            <li><a href="mailto:gvarela@cnseguros.hn">gvarela@cnseguros.hn</a></li>
+            <li><a href="mailto:gestionesmedicascol@cnseguros.hn">gestionesmedicascol@cnseguros.hn</a></li>
+          </ul>
+          <p class="cc">Con copia a <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a></p>
+        </div>
+      </div>
+      <div class="main">
+        <ol class="steps">
+          <li data-rise>Completa el formulario de reclamo en su totalidad, incluyendo la sección del asegurado y la del médico tratante.</li>
+          <li data-rise>Presenta un formulario de reclamo independiente por cada miembro de la familia.</li>
+          <li data-rise>Adjunta el recibo de honorarios médicos con firma y sello del médico, con todos los requisitos fiscales del SAR, el nombre del paciente y el detalle de procedimientos y valores.</li>
+          <li data-rise>Las recetas médicas deben incluir nombre del paciente, fecha, firma y sello del médico tratante.</li>
+          <li data-rise><span>Las facturas de medicamentos deben tener sello de pago y acompañarse de la receta original a nombre del paciente. <b>No se aceptan reimpresiones ni copias.</b></span></li>
+          <li data-rise>Para laboratorios o rayos X, presenta factura o recibo con requisitos fiscales del SAR, el detalle correspondiente y la receta médica, a nombre del paciente.</li>
+          <li data-rise>Si la farmacia retiene la receta de un medicamento controlado, presenta una fotocopia y solicita que la factura indique que fue retenida, con sello y firma de quien despachó.</li>
+          <li data-rise>Verifica que todos los documentos estén firmados y sellados por el médico, y que los diagnósticos y fechas coincidan entre la receta, el formulario y los gastos presentados.</li>
+          <li data-rise>Envía toda la documentación escaneada en PDF por correo electrónico a los destinatarios indicados.</li>
+        </ol>
+        <div class="before" data-rise>
+          <h3>Nota importante</h3>
+          <ul>
+            <li>Escanea toda la documentación en buena resolución, sin borrones, tachaduras ni enmendaduras, y envíala en formato PDF.</li>
+            <li>Las facturas que indiquen reimpresión o copia no son reembolsables.</li>
+            <li>Una vez la aseguradora recibe y valida tu documentación digital, el reembolso se realiza directamente a tu cuenta bancaria.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- DEPENDIENTES -->
-  <section id="dependientes" aria-labelledby="t-dep">
-    <div class="sec">Dependientes</div>
-    <h2 class="title" id="t-dep">Cómo agregar un dependiente</h2>
-    <p class="sub">Solo se aceptan cónyuge e hijos. La solicitud se hace con un ticket en Workday.</p>
-    <ol class="steps">
-      <li><div>Verifica que el dependiente califique: solo se aceptan <b>cónyuge e hijos</b>.</div></li>
-      <li><div>Reúne la documentación escaneada en PDF:
-        <ul>
-          <li><b>Cónyuge:</b> documento de identidad.</li>
-          <li><b>Hijos menores de edad:</b> documento de identidad.</li>
-          <li><b>Hijos mayores de edad:</b> partida de nacimiento.</li>
-        </ul></div></li>
-      <li><div>Descarga y completa el <b>Cuestionario de Salud</b> con la información del dependiente.</div></li>
-      <li><div>Crea un ticket en <b>Workday</b> y adjunta el Cuestionario de Salud y el documento de identidad o la partida de nacimiento, según corresponda. RH procesará tu solicitud y te notificará cuando el dependiente haya sido incorporado al seguro.</div></li>
-    </ol>
-    <div class="btn-row">
-      <a class="btn" href="https://chargerlogistics.sharepoint.com/:b:/r/sites/SEATLAN-HR/Shared%20Documents/SEATLAN%20INFO/Formularios/Cuestionario%20de%20Salud%20(.pdf?d=w55ce42478e1b40bdb4b3469c812b2c87&csf=1&web=1&e=nMqfds" target="_blank" rel="noopener">
-        <svg class="i" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
-        Descargar Cuestionario de Salud
-      </a>
+  <section id="dependientes" class="tinted" aria-labelledby="t-dep">
+    <div class="wrap grid">
+      <div class="side" data-rise>
+        <h2 id="t-dep">Cómo agregar un dependiente</h2>
+        <p>Solo se aceptan cónyuge e hijos. La solicitud se hace con un ticket en Workday.</p>
+        <dl class="docs-need">
+          <div><dt>Cónyuge</dt><dd>Documento de identidad</dd></div>
+          <div><dt>Hijos menores de edad</dt><dd>Documento de identidad</dd></div>
+          <div><dt>Hijos mayores de edad</dt><dd>Partida de nacimiento</dd></div>
+        </dl>
+      </div>
+      <div class="main">
+        <ol class="steps">
+          <li data-rise><span>Verifica que el dependiente califique: solo se aceptan <b>cónyuge e hijos</b>.</span></li>
+          <li data-rise>Reúne la documentación escaneada en PDF, según el tipo de dependiente.</li>
+          <li data-rise><span>Descarga y completa el <b>Cuestionario de Salud</b> con la información del dependiente.</span></li>
+          <li data-rise><span>Crea un ticket en <b>Workday</b> y adjunta el Cuestionario de Salud y el documento de identidad o la partida de nacimiento, según corresponda. RH procesará tu solicitud y te notificará cuando el dependiente haya sido incorporado al seguro.</span></li>
+        </ol>
+        <div class="dl" data-rise>
+          <a class="btn btn-dark" href="https://chargerlogistics.sharepoint.com/:b:/r/sites/SEATLAN-HR/Shared%20Documents/SEATLAN%20INFO/Formularios/Cuestionario%20de%20Salud%20(.pdf?d=w55ce42478e1b40bdb4b3469c812b2c87&csf=1&web=1&e=nMqfds" target="_blank" rel="noopener">Descargar Cuestionario de Salud</a>
+          <p class="hint">Para abrirlo, inicia sesión con tu correo corporativo de Charger.</p>
+        </div>
+      </div>
     </div>
-    <p class="access">Para abrirlo, inicia sesión con tu correo corporativo de Charger</p>
   </section>
 
-  <!-- FAQ -->
   <section id="faq" aria-labelledby="t-faq">
-    <div class="sec">Preguntas frecuentes</div>
-    <h2 class="title" id="t-faq">Resuelve tus dudas</h2>
+    <div class="wrap grid">
+      <div class="side" data-rise>
+        <h2 id="t-faq">Preguntas frecuentes</h2>
+        <p>Toca una pregunta para ver la respuesta.</p>
+      </div>
+      <div class="faq-list" id="faq-list">
 
-    <div id="faq-list">
 
-      <div class="faq-group">
-        <div class="faq-cat">Reembolsos</div>
-        <details class="faq"><summary>¿Cómo presento un reclamo de reembolso?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Completa el formulario de reclamo (sección del asegurado y del médico tratante) y envíalo junto con la documentación de respaldo —recibos, facturas y recetas— escaneada en PDF.</div></details>
-        <details class="faq"><summary>¿Debo llenar un formulario por cada miembro de mi familia?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Sí. Se debe presentar un formulario de reclamo independiente por cada miembro de la familia que tenga gastos médicos a reembolsar.</div></details>
-        <details class="faq"><summary>¿A dónde envío mi documentación?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Envía todos los documentos escaneados en PDF por correo electrónico a <a href="mailto:gvarela@cnseguros.hn">gvarela@cnseguros.hn</a> y <a href="mailto:gestionesmedicascol@cnseguros.hn">gestionesmedicascol@cnseguros.hn</a>, con copia (CC) a <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>.</div></details>
-        <details class="faq"><summary>¿Cómo y cuándo recibo mi reembolso?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Una vez la aseguradora recibe y valida tu documentación digital, inicia el proceso de reembolso, el cual se realiza directamente a tu cuenta bancaria.</div></details>
+      <div class="faq-group" data-rise>
+        <h3 class="faq-cat">Reembolsos</h3>
+        <details class="faq"><summary><span class="q">¿Cómo presento un reclamo de reembolso?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Completa el formulario de reclamo (sección del asegurado y del médico tratante) y envíalo junto con la documentación de respaldo —recibos, facturas y recetas— escaneada en PDF.</div></details>
+        <details class="faq"><summary><span class="q">¿Debo llenar un formulario por cada miembro de mi familia?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Sí. Se debe presentar un formulario de reclamo independiente por cada miembro de la familia que tenga gastos médicos a reembolsar.</div></details>
+        <details class="faq"><summary><span class="q">¿A dónde envío mi documentación?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Envía todos los documentos escaneados en PDF por correo electrónico a <a href="mailto:gvarela@cnseguros.hn">gvarela@cnseguros.hn</a> y <a href="mailto:gestionesmedicascol@cnseguros.hn">gestionesmedicascol@cnseguros.hn</a>, con copia (CC) a <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>.</div></details>
+        <details class="faq"><summary><span class="q">¿Cómo y cuándo recibo mi reembolso?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Una vez la aseguradora recibe y valida tu documentación digital, inicia el proceso de reembolso, el cual se realiza directamente a tu cuenta bancaria.</div></details>
       </div>
 
-      <div class="faq-group">
-        <div class="faq-cat">Documentos y requisitos</div>
-        <details class="faq"><summary>¿Qué requisitos debe cumplir el recibo de honorarios médicos?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Debe tener firma y sello del médico tratante, todos los requisitos fiscales del SAR, el nombre del paciente y el detalle de los procedimientos realizados con sus valores.</div></details>
-        <details class="faq"><summary>¿Qué debe incluir la receta médica?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Nombre del paciente, fecha, firma y sello del médico tratante.</div></details>
-        <details class="faq"><summary>¿Puedo presentar cualquier factura de medicamentos?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">No. La factura debe tener sello de pago e ir acompañada de la receta médica original a nombre del paciente. No se aceptan reimpresiones ni copias.</div></details>
-        <details class="faq"><summary>¿Qué necesito para reembolsos de laboratorios o rayos X?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Factura o recibo con todos los requisitos fiscales del SAR, el detalle correspondiente y la receta médica, todo a nombre del paciente.</div></details>
-        <details class="faq"><summary>¿Cómo debo escanear mis documentos?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">En buena resolución, sin borrones, tachaduras ni enmendaduras, y en formato PDF. Las facturas que indiquen reimpresión o copia no son reembolsables.</div></details>
+      <div class="faq-group" data-rise>
+        <h3 class="faq-cat">Documentos y requisitos</h3>
+        <details class="faq"><summary><span class="q">¿Qué requisitos debe cumplir el recibo de honorarios médicos?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Debe tener firma y sello del médico tratante, todos los requisitos fiscales del SAR, el nombre del paciente y el detalle de los procedimientos realizados con sus valores.</div></details>
+        <details class="faq"><summary><span class="q">¿Qué debe incluir la receta médica?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Nombre del paciente, fecha, firma y sello del médico tratante.</div></details>
+        <details class="faq"><summary><span class="q">¿Puedo presentar cualquier factura de medicamentos?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">No. La factura debe tener sello de pago e ir acompañada de la receta médica original a nombre del paciente. No se aceptan reimpresiones ni copias.</div></details>
+        <details class="faq"><summary><span class="q">¿Qué necesito para reembolsos de laboratorios o rayos X?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Factura o recibo con todos los requisitos fiscales del SAR, el detalle correspondiente y la receta médica, todo a nombre del paciente.</div></details>
+        <details class="faq"><summary><span class="q">¿Cómo debo escanear mis documentos?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">En buena resolución, sin borrones, tachaduras ni enmendaduras, y en formato PDF. Las facturas que indiquen reimpresión o copia no son reembolsables.</div></details>
       </div>
 
-      <div class="faq-group">
-        <div class="faq-cat">Dependientes</div>
-        <details class="faq"><summary>¿Quiénes califican como dependientes?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Solo el cónyuge y los hijos del colaborador.</div></details>
-        <details class="faq"><summary>¿Qué documentos necesito para agregar a mi cónyuge?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Documento de identidad del cónyuge, escaneado en PDF, además del Cuestionario de Salud.</div></details>
-        <details class="faq"><summary>¿Qué documentos necesito para agregar a un hijo?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Si el hijo es menor de edad: documento de identidad en PDF. Si es mayor de edad: partida de nacimiento en PDF. En ambos casos, también el Cuestionario de Salud.</div></details>
-        <details class="faq"><summary>¿Cómo envío la solicitud para agregar un dependiente?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Crea un ticket en Workday y adjunta el Cuestionario de Salud completado y el documento correspondiente. RH te notificará cuando el dependiente haya sido incorporado.</div></details>
+      <div class="faq-group" data-rise>
+        <h3 class="faq-cat">Dependientes</h3>
+        <details class="faq"><summary><span class="q">¿Quiénes califican como dependientes?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Solo el cónyuge y los hijos del colaborador.</div></details>
+        <details class="faq"><summary><span class="q">¿Qué documentos necesito para agregar a mi cónyuge?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Documento de identidad del cónyuge, escaneado en PDF, además del Cuestionario de Salud.</div></details>
+        <details class="faq"><summary><span class="q">¿Qué documentos necesito para agregar a un hijo?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Si el hijo es menor de edad: documento de identidad en PDF. Si es mayor de edad: partida de nacimiento en PDF. En ambos casos, también el Cuestionario de Salud.</div></details>
+        <details class="faq"><summary><span class="q">¿Cómo envío la solicitud para agregar un dependiente?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Crea un ticket en Workday y adjunta el Cuestionario de Salud completado y el documento correspondiente. RH te notificará cuando el dependiente haya sido incorporado.</div></details>
       </div>
 
-      <div class="faq-group">
-        <div class="faq-cat">Casos especiales</div>
-        <details class="faq"><summary>¿Qué hago si la farmacia retiene mi receta original (medicamento controlado)?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Presenta una fotocopia de la receta. La farmacia debe indicar en la factura que la receta fue retenida, incluyendo el sello y la firma del empleado que hizo el despacho.</div></details>
+      <div class="faq-group" data-rise>
+        <h3 class="faq-cat">Casos especiales</h3>
+        <details class="faq"><summary><span class="q">¿Qué hago si la farmacia retiene mi receta original (medicamento controlado)?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Presenta una fotocopia de la receta. La farmacia debe indicar en la factura que la receta fue retenida, incluyendo el sello y la firma del empleado que hizo el despacho.</div></details>
       </div>
 
-      <div class="faq-group">
-        <div class="faq-cat">Contacto</div>
-        <details class="faq"><summary>¿Por qué no puedo abrir los formularios o la red de proveedores?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Las carpetas están en SharePoint y requieren iniciar sesión con tu <strong>correo corporativo de Charger</strong>. Si abres el enlace con un correo personal, no tendrás acceso. Si ya iniciaste sesión con tu correo de la empresa y no abre, escribe a <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>.</div></details>
-        <details class="faq"><summary>¿A quién contacto si tengo dudas sobre cobertura o procedimientos médicos?<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div class="a">Gestiones Médicas 1: <a href="tel:+50495174228">+504 9517-4228</a> · Gestiones Médicas 2 (CN Seguros): <a href="tel:+50493814205">+504 9381-4205</a>.</div></details>
+      <div class="faq-group" data-rise>
+        <h3 class="faq-cat">Contacto</h3>
+        <details class="faq"><summary><span class="q">¿Por qué no puedo abrir los formularios o la red de proveedores?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Las carpetas están en SharePoint y requieren iniciar sesión con tu <strong>correo corporativo de Charger</strong>. Si abres el enlace con un correo personal, no tendrás acceso. Si ya iniciaste sesión con tu correo de la empresa y no abre, escribe a <a href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>.</div></details>
+        <details class="faq"><summary><span class="q">¿A quién contacto si tengo dudas sobre cobertura o procedimientos médicos?</span><span class="mark" aria-hidden="true"></span></summary><div class="a">Gestiones Médicas 1: <a href="tel:+50495174228">+504 9517-4228</a> · Gestiones Médicas 2 (CN Seguros): <a href="tel:+50493814205">+504 9381-4205</a>.</div></details>
       </div>
 
     </div>
+    </div>
   </section>
 
-  <!-- DOCUMENTOS -->
-  <section id="documentos" aria-labelledby="t-docs">
-    <div class="sec">Recursos</div>
-    <h2 class="title" id="t-docs">Formularios y red de proveedores</h2>
-    <p class="sub">Carpetas con los formularios del seguro y los directorios de proveedores afiliados. <strong>Para acceder a los documentos necesitas iniciar sesión con tu correo corporativo de Charger.</strong></p>
-    <div class="docs">
-      <div class="doc">
-        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+  <section id="documentos" class="resources" aria-labelledby="t-docs">
+    <div class="wrap grid">
+      <div class="res-head" data-rise>
+        <h2 id="t-docs">Formularios y red de proveedores</h2>
+        <p>Las carpetas están en SharePoint. <strong>Para abrirlas, inicia sesión con tu correo corporativo de Charger.</strong></p>
+      </div>
+      <div class="res" data-rise>
         <h3>Formularios</h3>
         <ul>
           <li>Reclamación de gastos médicos</li>
@@ -295,12 +328,9 @@ details.faq .a{padding:0 18px 18px;font-size:15px;color:var(--muted)}
           <li>Pre-certificación de hospitalización y cirugías</li>
           <li>Cuestionario de Salud</li>
         </ul>
-        <a class="btn" href="https://chargerlogistics.sharepoint.com/:f:/s/SEATLAN-HR/IgCxUPghpATPTrGobTod1LOIAeR1zTlhdi1cCkvR_s5vLBA?e=OW8Pu0" target="_blank" rel="noopener">Abrir carpeta
-          <svg class="i" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
-        <div class="access">Para abrirlo, inicia sesión con tu correo corporativo de Charger</div>
+        <a class="btn btn-dark" href="https://chargerlogistics.sharepoint.com/:f:/s/SEATLAN-HR/IgCxUPghpATPTrGobTod1LOIAeR1zTlhdi1cCkvR_s5vLBA?e=OW8Pu0" target="_blank" rel="noopener">Abrir carpeta de formularios</a>
       </div>
-      <div class="doc">
-        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 12 2.5a7 7 0 0 1 7 7C19 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg></div>
+      <div class="res" data-rise style="--d:1">
         <h3>Red de proveedores</h3>
         <ul>
           <li>Farmacias, laboratorios y médicos general</li>
@@ -308,23 +338,39 @@ details.faq .a{padding:0 18px 18px;font-size:15px;color:var(--muted)}
           <li>Hospitales y terapia física</li>
           <li>Clínicas Caribe Honduras (MAWDY)</li>
         </ul>
-        <a class="btn" href="https://chargerlogistics.sharepoint.com/:f:/s/SEATLAN-HR/IgASd9xOjn6STbxTRC5qaI1XAURVa35ZokFMgpnFpd_yM1g?e=4H0FW9" target="_blank" rel="noopener">Abrir carpeta
-          <svg class="i" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
-        <div class="access">Para abrirlo, inicia sesión con tu correo corporativo de Charger</div>
+        <a class="btn btn-dark" href="https://chargerlogistics.sharepoint.com/:f:/s/SEATLAN-HR/IgASd9xOjn6STbxTRC5qaI1XAURVa35ZokFMgpnFpd_yM1g?e=4H0FW9" target="_blank" rel="noopener">Abrir red de proveedores</a>
       </div>
     </div>
   </section>
-
 </main>
 
-<footer class="site-foot">
-  <div class="swoosh-bar"></div>
-  <div class="foot-in">
-    <img class="brand" src="charger-logo.png" alt="Charger Logistics">
-    <div class="ppl">Powered by People<small>Recursos Humanos | Charger Logistics Honduras</small></div>
-    <div class="legal">Para dudas adicionales, escribe a hrhondhelpdesk@chargerlogistics.com</div>
+<footer class="close">
+  <div class="wrap">
+    <h2 data-rise>¿Tienes más dudas?</h2>
+    <a class="mail" data-rise style="--d:1" href="mailto:hrhondhelpdesk@chargerlogistics.com">hrhondhelpdesk@chargerlogistics.com</a>
+    <div class="grid">
+      <div class="sign" data-rise>
+        <img src="charger-logo.png" alt="Charger Logistics" width="146" height="60" loading="lazy">
+        <p>Powered by People. Recursos Humanos, Charger Logistics Honduras.</p>
+      </div>
+      <p class="note" data-rise style="--d:1">Este sitio resume el proceso del seguro médico Seatlan para colaboradores de Charger Logistics Honduras. Las condiciones de cobertura las define la aseguradora.</p>
+    </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  if(window.__riseFallback) clearTimeout(window.__riseFallback);
+  var items=document.querySelectorAll('[data-rise]');
+  if(!('IntersectionObserver' in window)){document.documentElement.classList.add('no-rise');return;}
+  var io=new IntersectionObserver(function(entries){
+    var batch=0;
+    entries.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target;
+      if(!el.style.getPropertyValue('--d')) el.style.setProperty('--d',batch++);
+      el.classList.add('in'); io.unobserve(el); });
+  },{rootMargin:'0px 0px -40px 0px',threshold:0});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>
