@@ -44,6 +44,10 @@ a{color:var(--blue);text-underline-offset:3px}
 .btn:active{transform:scale(.97)}
 .btn-light{background:var(--white);color:var(--indigo)}
 .btn-light:hover{background:var(--sky)}
+.btn-accent{background:var(--cyan);color:var(--ink);box-shadow:0 0 0 0 rgba(2,175,240,.55);animation:nudge 2.4s ease-out 1.2s 2}
+.btn-accent:hover{background:var(--sky)}
+@keyframes nudge{70%{box-shadow:0 0 0 14px rgba(2,175,240,0)}100%{box-shadow:0 0 0 0 rgba(2,175,240,0)}}
+#proveedores{scroll-margin-top:24px}
 .btn-dark{background:var(--indigo);color:var(--white)}
 .btn-dark:hover{background:var(--ink)}
 .link{font-weight:600;font-size:var(--fs-small);color:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:6px;text-decoration-thickness:2px;transition:color .2s}
@@ -158,6 +162,7 @@ details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;a
   html{scroll-behavior:auto}
   .js [data-rise]{opacity:1;transform:none;transition:none}
   details.faq .a{animation:none}
+  .btn-accent{animation:none}
   *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important}
 }
 </style>
@@ -187,6 +192,7 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         <p class="lead">Reembolsos, dependientes, formularios y red de proveedores, claros y en un solo lugar.</p>
         <p class="hero-actions">
           <a class="btn btn-light" href="#reclamo">Presentar un reclamo</a>
+          <a class="btn btn-accent" href="#proveedores">Red de proveedores</a>
           <a class="link" href="#dependientes">Agregar un dependiente</a>
         </p>
       </div>
@@ -332,7 +338,7 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         </ul>
         <a class="btn btn-dark" href="https://chargerlogistics.sharepoint.com/:f:/s/SEATLAN-HR/IgCxUPghpATPTrGobTod1LOIAeR1zTlhdi1cCkvR_s5vLBA?e=OW8Pu0" target="_blank" rel="noopener">Abrir carpeta de formularios</a>
       </div>
-      <div class="res" data-rise style="--d:1">
+      <div class="res" id="proveedores" data-rise style="--d:1">
         <h3>Red de proveedores</h3>
         <ul>
           <li>Farmacias, laboratorios y médicos general</li>
