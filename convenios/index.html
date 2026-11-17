@@ -89,7 +89,9 @@ main{padding-block:var(--gap)}
 .who{grid-column:3/span 3}
 .name{font-size:var(--fs-statement);font-weight:600;line-height:1.15;letter-spacing:-.015em;color:var(--indigo)}
 .meta{display:block;margin-top:8px;font-size:var(--fs-small);color:var(--muted)}
-.new{color:var(--blue);font-weight:700}
+.new{display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;padding:4px 10px 4px 8px;border-radius:999px;background:var(--blue);color:var(--white);font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;box-shadow:0 0 0 3px rgba(2,175,240,.22)}
+.new::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.deal.is-new .tile{box-shadow:inset 0 0 0 3px var(--cyan)}
 .sum{grid-column:6/span 4;font-size:var(--fs-small);max-width:44ch}
 .cue{display:block;margin-top:12px;font-weight:600;color:var(--indigo);text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:6px;text-decoration-thickness:2px}
 .cue-close,details[open] .cue-open{display:none}
@@ -557,10 +559,10 @@ function row(p,i){
   const facts = p.items.map(it=>`<div><dt>${esc(it.lbl)}</dt><dd>${linkify(it.text)}${it.link?` <a href="${esc(it.link.url)}" target="_blank" rel="noopener">${esc(it.link.label)}</a>`:""}</dd></div>`).join("");
   const how = (p.how||["Presenta tu credencial corporativa vigente."]).map(s=>`<li>${linkify(s)}</li>`).join("");
   const acts = actions(p);
-  return `<li class="deal" data-rise><details>
+  return `<li class="deal${p.nuevo?" is-new":""}" data-rise><details>
     <summary>
       <span class="tile" style="background:${esc(l.bg||"#F3F6FA")}">${logo}</span>
-      <span class="who"><h3 class="name">${esc(p.name)}</h3><span class="meta">${esc(p.catLabel)} · ${esc(p.chip?p.chip.text:"")}${p.nuevo?' · <span class="new">Nuevo</span>':""}</span></span>
+      <span class="who">${p.nuevo?'<span class="new">Nuevo</span>':""}<h3 class="name">${esc(p.name)}</h3><span class="meta">${esc(p.catLabel)} · ${esc(p.chip?p.chip.text:"")}</span></span>
       <span class="sum">${esc(main)}<span class="cue"><span class="cue-open">Ver detalles y cómo usarlo</span><span class="cue-close">Ocultar</span></span></span>
       ${offer(p.badge)}
     </summary>
