@@ -22,7 +22,12 @@
   --fs-h2:clamp(32px,4.2vw,64px);
   --fs-statement:clamp(22px,2.2vw,32px);
   --fs-body:18px; --fs-small:16px;
-  --m:clamp(20px,4.5vw,64px);
+  --m:clamp(24px,7vw,140px);
+  --m-hero:clamp(20px,4.5vw,64px);
+  --max:1200px;
+  --grad:linear-gradient(135deg,#004AAD 0%,#2E3192 100%);
+  --grad-light:linear-gradient(90deg,#7DC3EA 0%,#02AFF0 100%);
+  --shadow:0 1px 2px rgba(11,15,46,.05),0 12px 32px -16px rgba(46,49,146,.28);
   --gap:clamp(96px,10vw,160px);
   --ease:cubic-bezier(.2,.7,.2,1);
 }
@@ -35,7 +40,7 @@ img{display:block;max-width:100%;height:auto}
 a{color:var(--blue);text-underline-offset:3px}
 ::selection{background:var(--cyan);color:var(--ink)}
 :focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
-.wrap{padding-inline:var(--m)}
+.wrap{padding-inline:max(20px,calc(max(var(--m),calc((100% - var(--max))/2))/2))}
 .skip{position:absolute;left:var(--m);top:-100px;z-index:10;background:var(--white);color:var(--indigo);padding:12px 20px;font-weight:600}
 .skip:focus{top:16px}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:48px}
@@ -48,14 +53,15 @@ a{color:var(--blue);text-underline-offset:3px}
 .btn-accent:hover{background:var(--sky)}
 @keyframes nudge{70%{box-shadow:0 0 0 14px rgba(2,175,240,0)}100%{box-shadow:0 0 0 0 rgba(2,175,240,0)}}
 #proveedores{scroll-margin-top:24px}
-.btn-dark{background:var(--indigo);color:var(--white)}
-.btn-dark:hover{background:var(--ink)}
+.btn-dark{gap:8px;border-radius:12px;background:var(--grad);color:var(--white);box-shadow:0 10px 22px -12px rgba(46,49,146,.8)}
+.btn-dark:hover{background:var(--indigo)}
+.btn-dark::after{content:"→";font-weight:700}
 .link{font-weight:600;font-size:var(--fs-small);color:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:6px;text-decoration-thickness:2px;transition:color .2s}
 .link:hover{color:var(--sky)}
 
 /* Portada */
 .hero{background:var(--indigo);color:var(--white)}
-.hero .wrap{padding-block:28px clamp(64px,8vw,120px)}
+.hero .wrap{padding-block:28px clamp(64px,8vw,120px);padding-inline:var(--m-hero)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{width:clamp(96px,9vw,122px)}
 .bar ul{list-style:none;display:flex;gap:clamp(16px,2.6vw,36px)}
@@ -90,18 +96,18 @@ section{padding-block:var(--gap)}
 .steps a{font-weight:600;text-decoration-thickness:2px;text-decoration-color:var(--sky);text-underline-offset:5px;transition:color .2s}
 .steps a:hover{color:var(--indigo);text-decoration-color:var(--indigo)}
 
-.send{margin-top:40px;background:var(--indigo);color:var(--white);padding:clamp(24px,2.6vw,36px)}
+.send{margin-top:40px;background:var(--grad);color:var(--white);padding:clamp(24px,2.6vw,36px);border-radius:20px;box-shadow:0 18px 36px -20px rgba(46,49,146,.8)}
 .send h3{font-size:var(--fs-body);font-weight:600}
 .send ul{list-style:none;margin-top:16px;display:grid;gap:8px}
 .send a{color:var(--white);font-weight:600;overflow-wrap:anywhere;text-decoration-color:var(--sky);text-decoration-thickness:2px;text-underline-offset:5px}
 .send a:hover{color:var(--sky)}
 .send .cc{margin-top:16px;font-size:var(--fs-small);color:#DCEBFA}
-.before{margin-top:56px;background:var(--tint);padding:clamp(24px,2.6vw,36px)}
+.before{margin-top:24px;background:var(--tint);padding:clamp(24px,2.6vw,36px);border-radius:20px}
 .before h3{font-size:var(--fs-body);font-weight:600;color:var(--indigo)}
 .before ul{margin-top:12px;padding-left:1.2em;display:grid;gap:8px}
 
 .docs-need{margin-top:40px;display:grid;gap:12px}
-.docs-need div{background:var(--white);padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.docs-need div{background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .docs-need dt{font-weight:700;color:var(--indigo)}
 .docs-need dd{margin:0}
 .dl{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
@@ -110,21 +116,21 @@ section{padding-block:var(--gap)}
 /* Preguntas */
 .faq-list{grid-column:7/span 6;display:grid;gap:56px}
 .faq-cat{font-size:var(--fs-statement);font-weight:600;color:var(--indigo);letter-spacing:-.015em;margin-bottom:16px}
-.faq-group{--pad:clamp(14px,1.6vw,22px);display:grid;gap:6px}
-details.faq{margin-inline:calc(-1*var(--pad))}
+.faq-group{--pad:clamp(16px,1.8vw,24px);display:grid;gap:10px}
+details.faq{background:var(--white);border:1px solid var(--track);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
 details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:18px var(--pad);font-weight:600;transition:background-color .25s}
 details.faq summary::-webkit-details-marker{display:none}
-details.faq summary:hover,details.faq[open] summary{background:var(--tint)}
+details.faq summary:hover{background:var(--tint)}
 .mark{flex:none;font-family:var(--title);font-weight:700;color:var(--blue);width:1em;text-align:center;transition:transform .3s var(--ease)}
 .mark::before{content:"+"}
 details.faq[open] .mark{transform:rotate(45deg)}
-details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;animation:reveal .45s var(--ease) both}
+details.faq .a{padding:0 var(--pad) 24px;max-width:none;animation:reveal .45s var(--ease) both}
 @keyframes reveal{from{opacity:0;transform:translateY(10px)}}
 
 /* Formularios */
 .resources{background:var(--sky)}
 .resources .side h2{color:var(--ink)}
-.res{grid-column:span 6;background:var(--white);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column}
+.res{grid-column:span 6;background:var(--white);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;border-radius:20px;box-shadow:0 24px 44px -26px rgba(11,15,46,.45)}
 .res h3{font-size:var(--fs-statement);font-weight:600;color:var(--indigo);letter-spacing:-.015em}
 .res ul{margin:20px 0 32px;padding-left:1.2em;display:grid;gap:8px;flex:1}
 .res .btn{align-self:flex-start}
@@ -134,6 +140,7 @@ details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;a
 
 /* Cierre */
 .close{background:var(--indigo);color:var(--white);padding-block:var(--gap) 56px}
+.close .wrap{padding-inline:var(--m-hero)}
 .close h2{font-size:var(--fs-display);font-weight:700;line-height:1;letter-spacing:-.03em}
 .close .mail{display:inline-block;margin-top:32px;font-family:var(--title);font-weight:600;font-size:var(--fs-statement);color:var(--sky);overflow-wrap:anywhere;text-decoration-thickness:2px;text-underline-offset:8px;transition:color .2s}
 .close .mail:hover{color:var(--white)}
@@ -141,6 +148,28 @@ details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;a
 .close .sign{grid-column:1/span 6;display:flex;align-items:center;gap:24px}
 .close .sign img{width:146px}
 .close .note{grid-column:8/span 5;font-size:var(--fs-small)}
+
+
+/* Recursos visuales (mismos que Convenios) */
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;font:700 13px/1.2 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.pill svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pill-glass{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:var(--white)}
+.pill-solid{background:var(--grad);color:var(--white);box-shadow:0 8px 20px -10px rgba(46,49,146,.7)}
+.grad-light{background:var(--grad-light);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-dark{background:linear-gradient(90deg,#004AAD,#2E3192);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .pill{margin-bottom:24px}
+.side .pill,.res-head .pill{margin-bottom:20px}
+.res-head .pill{grid-column:1/-1;justify-self:start;margin-bottom:0}
+.stats{list-style:none;margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:560px}
+.stats li{padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.stats b{display:block;font-family:var(--title);font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-.02em}
+.stats span{display:block;margin-top:8px;font-size:14px;line-height:1.3;color:var(--sky);font-weight:600}
+.lines{position:relative;border-radius:20px;box-shadow:0 24px 48px -24px rgba(11,15,46,.6)}
+.lines .live{position:absolute;top:-18px;left:-18px;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:var(--white);color:var(--indigo);font:600 15px/1.2 var(--body);box-shadow:0 14px 30px -12px rgba(11,15,46,.55)}
+.lines .live::before{content:"";width:9px;height:9px;border-radius:50%;background:#25D366;box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+.steps-card{background:var(--white);border:1px solid var(--track);border-radius:20px;box-shadow:var(--shadow);padding:clamp(24px,3vw,44px)}
+.tinted .steps-card{border-color:transparent}
+.steps > li::before{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--grad);color:var(--white);font-size:18px;box-shadow:0 8px 18px -10px rgba(46,49,146,.8)}
 
 /* Entradas */
 .js [data-rise]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--d,0)*70ms)}
@@ -151,12 +180,18 @@ details.faq .a{background:var(--tint);padding:0 var(--pad) 24px;max-width:none;a
   .hero-copy,.lines,.side,.main,.faq-list,.res,.res-head h2,.res-head p,.close .sign,.close .note{grid-column:1/-1}
   .lines{max-width:520px}
   .bar ul li.opt{display:none}
+  .lines .live{top:-14px;left:8px}
+  .lines{padding-top:44px}
 }
 @media (max-width:560px){
   .steps > li{grid-template-columns:40px 1fr}
   .docs-need div{grid-template-columns:1fr;gap:4px}
   .send ul{font-size:var(--fs-small)}
   .close .sign{flex-direction:column;align-items:flex-start}
+  .stats{gap:8px}
+  .stats li{padding:14px 12px;border-radius:12px}
+  .stats span{font-size:12px}
+  .pill{font-size:11px;padding:7px 12px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -188,8 +223,10 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
 
     <div class="grid">
       <div class="hero-copy" data-rise>
-        <h1>Tu seguro médico Seatlan</h1>
+        <span class="pill pill-glass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M12 9v6M9 12h6"/></svg>Beneficio para colaboradores</span>
+        <h1>Tu seguro <span class="grad-light">médico</span> Seatlan</h1>
         <p class="lead">Reembolsos, dependientes, formularios y red de proveedores, claros y en un solo lugar.</p>
+        <ul class="stats" id="stats"></ul>
         <p class="hero-actions">
           <a class="btn btn-light" href="#reclamo">Presentar un reclamo</a>
           <a class="btn btn-accent" href="#proveedores">Red de proveedores</a>
@@ -197,6 +234,7 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         </p>
       </div>
       <aside class="lines" data-rise style="--d:1" aria-labelledby="t-lineas">
+        <b class="live">Atención por WhatsApp</b>
         <h2 id="t-lineas">Gestiones Médicas</h2>
         <p>Escríbeles por WhatsApp si tienes dudas sobre cobertura o procedimientos médicos.</p>
         <ul>
@@ -212,7 +250,8 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
   <section id="reclamo" aria-labelledby="t-reclamo">
     <div class="wrap grid">
       <div class="side" data-rise>
-        <h2 id="t-reclamo">Cómo presentar un reclamo</h2>
+        <span class="pill pill-solid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Reembolsos</span>
+        <h2 id="t-reclamo">Cómo presentar un <span class="grad-dark">reclamo</span></h2>
         <p>Sigue estos pasos para que la aseguradora valide tu reembolso sin devoluciones.</p>
         <div class="send">
           <h3>Envía la documentación en PDF a</h3>
@@ -224,6 +263,7 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         </div>
       </div>
       <div class="main">
+        <div class="steps-card">
         <ol class="steps">
           <li data-rise><span>Completa el <a href="#documentos">formulario de reclamo</a> en su totalidad, incluyendo la sección del asegurado y la del médico tratante.</span></li>
           <li data-rise><span>Presenta un <a href="#documentos">formulario de reclamo</a> independiente por cada miembro de la familia.</span></li>
@@ -235,6 +275,7 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
           <li data-rise>Verifica que todos los documentos estén firmados y sellados por el médico, y que los diagnósticos y fechas coincidan entre la receta, el formulario y los gastos presentados.</li>
           <li data-rise>Envía toda la documentación escaneada en PDF por correo electrónico a los destinatarios indicados.</li>
         </ol>
+        </div>
         <div class="before" data-rise>
           <h3>Nota importante</h3>
           <ul>
@@ -250,7 +291,8 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
   <section id="dependientes" class="tinted" aria-labelledby="t-dep">
     <div class="wrap grid">
       <div class="side" data-rise>
-        <h2 id="t-dep">Cómo agregar un dependiente</h2>
+        <span class="pill pill-solid"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M2.5 20c.6-3.5 2.8-5.5 5.5-5.5s4.9 2 5.5 5.5M14 20c.4-2.6 1.6-4.1 3-4.1s2.7 1.5 3.1 4.1"/></svg>Dependientes</span>
+        <h2 id="t-dep">Cómo agregar un <span class="grad-dark">dependiente</span></h2>
         <p>Solo se aceptan cónyuge e hijos. La solicitud se hace con un ticket en Workday.</p>
         <dl class="docs-need">
           <div><dt>Cónyuge</dt><dd>Documento de identidad</dd></div>
@@ -259,12 +301,14 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         </dl>
       </div>
       <div class="main">
+        <div class="steps-card">
         <ol class="steps">
           <li data-rise><span>Verifica que el dependiente califique: solo se aceptan <b>cónyuge e hijos</b>.</span></li>
           <li data-rise>Reúne la documentación escaneada en PDF, según el tipo de dependiente.</li>
           <li data-rise><span>Descarga y completa el <b>Cuestionario de Salud</b> con la información del dependiente.</span></li>
           <li data-rise><span>Crea un ticket en <b>Workday</b> y adjunta el Cuestionario de Salud y la tarjeta de identidad o la partida de nacimiento, según corresponda. RH procesará tu solicitud y te notificará cuando el dependiente haya sido incorporado al seguro.</span></li>
         </ol>
+        </div>
         <div class="dl" data-rise>
           <a class="btn btn-dark" href="https://chargerlogistics.sharepoint.com/:b:/r/sites/SEATLAN-HR/Shared%20Documents/SEATLAN%20INFO/Formularios/Cuestionario%20de%20Salud%20(.pdf?d=w55ce42478e1b40bdb4b3469c812b2c87&csf=1&web=1&e=nMqfds" target="_blank" rel="noopener">Descargar Cuestionario de Salud</a>
           <p class="hint">Para abrirlo, inicia sesión con tu correo corporativo de Charger.</p>
@@ -276,7 +320,8 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
   <section id="faq" aria-labelledby="t-faq">
     <div class="wrap grid">
       <div class="side" data-rise>
-        <h2 id="t-faq">Preguntas frecuentes</h2>
+        <span class="pill pill-solid"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg>Resuelve tus dudas</span>
+        <h2 id="t-faq">Preguntas <span class="grad-dark">frecuentes</span></h2>
         <p>Toca una pregunta para ver la respuesta.</p>
       </div>
       <div class="faq-list" id="faq-list">
@@ -325,7 +370,8 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
   <section id="documentos" class="resources" aria-labelledby="t-docs">
     <div class="wrap grid">
       <div class="res-head" data-rise>
-        <h2 id="t-docs">Formularios y red de proveedores</h2>
+        <span class="pill pill-solid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>Documentos</span>
+        <h2 id="t-docs">Formularios y red de <span class="grad-dark">proveedores</span></h2>
         <p>Las carpetas están en SharePoint. <strong>Para abrirlas, inicia sesión con tu correo corporativo de Charger.</strong></p>
       </div>
       <div class="res" data-rise>
@@ -369,6 +415,13 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
 <script>
 (function(){
   if(window.__riseFallback) clearTimeout(window.__riseFallback);
+  var st=document.getElementById('stats');
+  if(st){
+    var n=function(sel){return document.querySelectorAll(sel).length;};
+    var data=[[n('#reclamo .steps > li'),'pasos para tu reembolso'],[n('#dependientes .steps > li'),'pasos para un dependiente'],[n('details.faq'),'preguntas resueltas']];
+    st.innerHTML=data.map(function(d){return '<li><b>'+d[0]+'</b><span>'+d[1]+'</span></li>';}).join('');
+  }
+
   var items=document.querySelectorAll('[data-rise]');
   if(!('IntersectionObserver' in window)){document.documentElement.classList.add('no-rise');return;}
   var io=new IntersectionObserver(function(entries){
