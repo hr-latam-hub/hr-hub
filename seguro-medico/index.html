@@ -160,10 +160,6 @@ details.faq .a{padding:0 var(--pad) 24px;max-width:none;animation:reveal .45s va
 .hero .pill{margin-bottom:24px}
 .side .pill,.res-head .pill{margin-bottom:20px}
 .res-head .pill{grid-column:1/-1;justify-self:start;margin-bottom:0}
-.stats{list-style:none;margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:560px}
-.stats li{padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
-.stats b{display:block;font-family:var(--title);font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-.02em}
-.stats span{display:block;margin-top:8px;font-size:14px;line-height:1.3;color:var(--sky);font-weight:600}
 .lines{position:relative;border-radius:20px;box-shadow:0 24px 48px -24px rgba(11,15,46,.6)}
 .lines .live{position:absolute;top:-18px;left:-18px;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:var(--white);color:var(--indigo);font:600 15px/1.2 var(--body);box-shadow:0 14px 30px -12px rgba(11,15,46,.55)}
 .lines .live::before{content:"";width:9px;height:9px;border-radius:50%;background:#25D366;box-shadow:0 0 0 4px rgba(37,211,102,.2)}
@@ -188,10 +184,7 @@ details.faq .a{padding:0 var(--pad) 24px;max-width:none;animation:reveal .45s va
   .docs-need div{grid-template-columns:1fr;gap:4px}
   .send ul{font-size:var(--fs-small)}
   .close .sign{flex-direction:column;align-items:flex-start}
-  .stats{gap:8px}
-  .stats li{padding:14px 12px;border-radius:12px}
-  .stats span{font-size:12px}
-  .pill{font-size:11px;padding:7px 12px}
+        .pill{font-size:11px;padding:7px 12px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -226,7 +219,6 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
         <span class="pill pill-glass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M12 9v6M9 12h6"/></svg>Beneficio para colaboradores</span>
         <h1>Tu seguro <span class="grad-light">médico</span> Seatlan</h1>
         <p class="lead">Reembolsos, dependientes, formularios y red de proveedores, claros y en un solo lugar.</p>
-        <ul class="stats" id="stats"></ul>
         <p class="hero-actions">
           <a class="btn btn-light" href="#reclamo">Presentar un reclamo</a>
           <a class="btn btn-accent" href="#proveedores">Red de proveedores</a>
@@ -415,12 +407,6 @@ window.__riseFallback=setTimeout(function(){document.documentElement.classList.a
 <script>
 (function(){
   if(window.__riseFallback) clearTimeout(window.__riseFallback);
-  var st=document.getElementById('stats');
-  if(st){
-    var n=function(sel){return document.querySelectorAll(sel).length;};
-    var data=[[n('#reclamo .steps > li'),'pasos para tu reembolso'],[n('#dependientes .steps > li'),'pasos para un dependiente'],[n('details.faq'),'preguntas resueltas']];
-    st.innerHTML=data.map(function(d){return '<li><b>'+d[0]+'</b><span>'+d[1]+'</span></li>';}).join('');
-  }
 
   var items=document.querySelectorAll('[data-rise]');
   if(!('IntersectionObserver' in window)){document.documentElement.classList.add('no-rise');return;}
