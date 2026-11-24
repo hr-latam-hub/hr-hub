@@ -575,7 +575,9 @@ function actions(p){
 
 const catIds = new Set(CATEGORIES.map(c=>c[0]));
 let current = "todos";
-const fromHash = () => { const h=decodeURIComponent(location.hash.slice(1)); return catIds.has(h)&&PROVIDERS.some(p=>p.cat===h) ? h : "todos"; };
+const EMP="emprendedores";
+const inCat = (p,id) => id==="todos" || (id===EMP ? !!p.emprendedor : p.cat===id);
+const fromHash = () => { const h=decodeURIComponent(location.hash.slice(1)); return (catIds.has(h)||h===EMP)&&PROVIDERS.some(p=>inCat(p,h)) ? h : "todos"; };
 current = fromHash();
 
 function intro(){
@@ -617,10 +619,10 @@ function row(p,i){
   </details></li>`;
 }
 function render(){
-  const count = id => id==="todos" ? PROVIDERS.length : PROVIDERS.filter(p=>p.cat===id).length;
-  $("#filters").innerHTML = [["todos","Todos"],...CATEGORIES.filter(([id])=>count(id))].map(([id,l])=>
+  const count = id => PROVIDERS.filter(p=>inCat(p,id)).length;
+  $("#filters").innerHTML = [["todos","Todos"],...(count(EMP)?[[EMP,"Emprendedores Charger"]]:[]),...CATEGORIES.filter(([id])=>count(id))].map(([id,l])=>
     `<button type="button" data-cat="${id}" aria-pressed="${current===id}">${esc(l)}<span class="n">${count(id)}</span></button>`).join("");
-  const list = PROVIDERS.filter(p=>current==="todos"||p.cat===current);
+  const list = PROVIDERS.filter(p=>inCat(p,current));
   $("#deals").innerHTML = list.length ? list.map(row).join("")
     : `<li class="soon"><strong>Próximamente</strong>Estamos sumando nuevos convenios en esta categoría.</li>`;
   observe(document.querySelectorAll("#deals [data-rise]"));
